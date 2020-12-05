@@ -1,15 +1,15 @@
 # Farm-Mangement
 
-Luke Oltmanns
-CompsSci 371
-Final Project
+Luke Oltmanns,
+CompSci 371,
+Final Project,
 12/9/2020
 
-Farm Mangement is a Julia program that helps farmers calculate their expenses.
+Farm Management is a Julia program that helps farmers calculate their expenses.
 
-In sort, this is a basic Farm Managment application that displays total cost expenses and profits.
-This program lets the user test a variety of rates from milk stats, to employee info.
-Real numerical values are incorperated into this program to give the most accurate outcome possible.
+In short, this is a basic Farm Management application that displays total cost expenses and profits. 
+This program lets the user test a variety of rates from milk stats, to employee info. 
+Real numerical values are incorporated into this program to give the most accurate outcome possible.
 
 
 ### References
