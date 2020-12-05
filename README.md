@@ -11,7 +11,7 @@ In short, this is a basic Farm Management application that displays total cost e
 This program lets the user test a variety of rates from milk stats, to employee info. 
 Real numerical values are incorporated into this program to give the most accurate outcome possible.
 
-This program works on replit. Other IDEs have never been tested with this program
+This program works on replit. Other IDEs have never been tested with this program.
 
 ### Contributions
 
