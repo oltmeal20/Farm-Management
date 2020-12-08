@@ -37,46 +37,91 @@
       println("\tPPD (\$/cwt): \t\t\t\t\t\t", PPD)
 
     # User Option to Edit
-      print("\n\tWould you like to edit rates? (y/n): ")
+      print("\n\tWould you like to edit rates? (y/n):")
       userMilkPriceStatsInput = chomp(readline())
 
     # User Edit
       if(userMilkPriceStatsInput == "y")
         print("\n\tEnter Fat %: \t\t\t\t\t\t")
         fatMilkComp = chomp(readline())
-        fatMilkComp = (parse(Float16, fatMilkComp))
+        try 
+          fatMilkComp = (parse(Float16, fatMilkComp))
+        catch e
+          fatMilkComp = 3.85
+          println("\tINVALID INPUT!\n\tSetting Fat % to: \t\t\t\t\t", fatMilkComp)
+        end
 
         print("\tEnter Protien %: \t\t\t\t\t")
         proteinMilkComp = chomp(readline())
-        proteinMilkComp = (parse(Float16, proteinMilkComp))
+        try 
+          proteinMilkComp = (parse(Float16, proteinMilkComp))
+        catch e
+          proteinMilkComp = 3.1
+          println("\tINVALID INPUT!\n\tSetting Protein % to: \t\t\t\t", proteinMilkComp)
+        end
 
         print("\tEnter Other Solids %: \t\t\t\t")
         otherSolidsMilkComp = chomp(readline())
-        otherSolidsMilkComp = (parse(Float16, otherSolidsMilkComp))
+        try 
+          otherSolidsMilkComp = (parse(Float16, otherSolidsMilkComp))
+        catch e
+          otherSolidsMilkComp = 5.75
+          println("\tINVALID INPUT!\n\tSetting Other Solids % to: \t\t\t", otherSolidsMilkComp)
+        end
         
         print("\tEnter SCC (100,000 cells): \t\t\t")
         SCCCells = chomp(readline())
-        SCCCells = (parse(Float16, SCCCells))
+        try 
+          SCCCells = (parse(Float16, SCCCells))
+        catch e
+          SCCCells = 350
+          println("\tINVALID INPUT!\n\tSetting SCC to: \t\t\t\t\t", SCCCells)
+        end
 
         print("\tEnter Fat \$/lb: \t\t\t\t\t")
         fatCompPrice = chomp(readline())
-        fatCompPrice = (parse(Float16, fatCompPrice))
+        try 
+          fatCompPrice = (parse(Float16, fatCompPrice))
+        catch e
+          fatCompPrice = 1.6275
+          println("\tINVALID INPUT!\n\tSetting Fat \$/lb to: \t\t\t\t", fatCompPrice)
+        end
 
         print("\tEnter Protein \$/lb: \t\t\t\t")
         proteinCompPrice = chomp(readline())
-        proteinCompPrice = (parse(Float16, proteinCompPrice))
+        try 
+          proteinCompPrice = (parse(Float16, proteinCompPrice))
+        catch e
+          proteinCompPrice = 4.4394
+          println("\tINVALID INPUT!\n\tSetting Protein \$/lb to: \t\t\t", proteinCompPrice)
+        end
 
         print("\tEnter Other Solids \$/lb: \t\t\t")
         otherSolidsCompPrice = chomp(readline())
-        otherSolidsCompPrice = (parse(Float16, otherSolidsCompPrice))
+        try 
+          otherSolidsCompPrice = (parse(Float16, otherSolidsCompPrice))
+        catch e
+          otherSolidsCompPrice = 0.1387
+          println("\tINVALID INPUT!\n\tSetting Other Solids \$/lb to: \t\t", fatMilkComp)
+        end
 
         print("\tEnter SCC Adjust. Rate (\$/cwt): \t")
         SCCAdjRate = chomp(readline())
-        SCCAdjRate = (parse(Float16, SCCAdjRate))
+        try
+          SCCAdjRate = (parse(Float16, SCCAdjRate))
+        catch e
+          SCCAdjRate = 0.00105
+          println("\tINVALID INPUT!\n\tSetting SCC Adjust. Rate to: \t\t", SCCAdjRate)
+        end
 
         print("\tEnter PPD (\$/cwt): \t\t\t\t\t")
         PPD = chomp(readline())
-        PPD = (parse(Float16, PPD))
+        try 
+          PPD = (parse(Float16, PPD))
+        catch e
+          PPD = 2.06
+          println("\tINVALID INPUT!\n\tSetting PPD to: \t\t\t\t\t", PPD)
+        end
       end
 
     # Calculations
@@ -116,7 +161,12 @@
       if(userHerdStatsInput == "y")
         print("\n\tEnter milk cow/lbs/day: \t\t\t")
         averageMilkPerCowPerDay = chomp(readline())
-        averageMilkPerCowPerDay = (parse(Float16, averageMilkPerCowPerDay))
+        try 
+          averageMilkPerCowPerDay = (parse(Float16, averageMilkPerCowPerDay))
+        catch e
+          averageMilkPerCowPerDay = 65
+          println("\tINVALID INPUT!\n\tSetting milk cow/lbs/day to: \t\t", averageMilkPerCowPerDay)
+        end
       end
 
     # Validate Beforehand Herd Stats
@@ -183,7 +233,12 @@
       if(userFeedingStatsCostInput == "y")
         print("\n\tEnter cost to feed cow/day: \t\t")
         feedCostPerCow = chomp(readline())
-        feedCostPerCow = (parse(Float16, feedCostPerCow))
+        try 
+          feedCostPerCow = (parse(Float16, feedCostPerCow))
+        catch e
+          feedCostPerCow = 4.01
+          println("\tINVALID INPUT!\n\tSetting cost to feed cow/day to: \t", feedCostPerCow)
+        end
       end
 
     # Feeding Stats
@@ -196,34 +251,64 @@
       println("\tMineral/Vitamin/Additives %: \t\t", mineralVitaminAmount)
 
     # User Option to Edit
-      print("\n\tWould you like to edit rates? (y/n): ")
+      print("\n\tWould you like to edit rates? (y/n):")
       userFeedingStatsRateInput = chomp(readline())
 
     # User Edit
       if(userFeedingStatsRateInput == "y")
         print("\n\tCorn Silage %: \t\t\t\t\t\t")
         editedCornSilageAmount = chomp(readline())
-        editedCornSilageAmount = (parse(Float16, editedCornSilageAmount))
+        try 
+          editedCornSilageAmount = (parse(Float16, editedCornSilageAmount))
+        catch e
+          editedCornSilageAmount = 70
+          println("\tINVALID INPUT!\n\tSetting Corn Silage % to: \t\t\t", editedCornSilageAmount)
+        end
 
         print("\tAlfalfa Hay %: \t\t\t\t\t\t")
         editedAlfalfaHayAmount = chomp(readline())
-        editedAlfalfaHayAmount = (parse(Float16, editedAlfalfaHayAmount))
+        try 
+          editedAlfalfaHayAmount = (parse(Float16, editedAlfalfaHayAmount))
+        catch e
+          editedAlfalfaHayAmount = 6
+          println("\tINVALID INPUT!\n\tSetting Alfalfa Hay % to: \t\t\t", editedAlfalfaHayAmount)
+        end
 
         print("\tCorn %: \t\t\t\t\t\t\t")
         editedCornAmount = chomp(readline())
-        editedCornAmount = (parse(Float16, editedCornAmount))
+        try 
+          editedCornAmount = (parse(Float16, editedCornAmount))
+        catch e
+          editedCornAmount = 12
+          println("\tINVALID INPUT!\n\tSetting Corn % to: \t\t\t\t\t", editedCornAmount)
+        end
 
         print("\tDistillers Grain %: \t\t\t\t")
         editedDistillersGrainAmount = chomp(readline())
-        editedDistillersGrainAmount = (parse(Float16, editedDistillersGrainAmount))
+        try 
+          editedDistillersGrainAmount = (parse(Float16, editedDistillersGrainAmount))
+        catch e
+          editedDistillersGrainAmount = 6
+          println("\tINVALID INPUT!\n\tSetting Distillers Grain % to: \t\t", editedDistillersGrainAmount)
+        end
 
         print("\tSoybean Meal %: \t\t\t\t\t")
         editedSoybeanMealAmount = chomp(readline())
-        editedSoybeanMealAmount = (parse(Float16, editedSoybeanMealAmount))
+        try 
+          editedSoybeanMealAmount = (parse(Float16, editedSoybeanMealAmount))
+        catch e
+          editedSoybeanMealAmount = 5
+          println("\tINVALID INPUT!\n\tSetting Soybean Meal % to: \t\t\t", editedSoybeanMealAmount)
+        end
 
         print("\tMineral/Vitamin/Additives %: \t\t")
         editedMineralVitaminAmount = chomp(readline())
-        editedMineralVitaminAmount = (parse(Float16, editedMineralVitaminAmount))
+        try 
+          editedMineralVitaminAmount = (parse(Float16, editedMineralVitaminAmount))
+        catch e
+          editedMineralVitaminAmount = 1
+          println("\tINVALID INPUT!\n\tSetting M/V/A % to: \t\t\t\t", editedMineralVitaminAmount)
+        end
 
         # Validate Edited Feeding (Validate User Edit)
           TotalFeedRate = editedCornSilageAmount + editedAlfalfaHayAmount + editedCornAmount + editedDistillersGrainAmount + editedSoybeanMealAmount + editedMineralVitaminAmount
@@ -294,7 +379,12 @@
     # Prompt User to Enter Basic Employee Info
       print("Enter Number of Employees: \t\t\t\t")
       NumberOfEmployees = chomp(readline())
-      NumberOfEmployees = (parse(Int8, NumberOfEmployees))
+      try 
+        editedCornSilageAmount = (parse(Int8, NumberOfEmployees))
+      catch e
+        NumberOfEmployees = 6
+        println("INVALID INPUT!\nSetting Number of Employees to: \t\t", NumberOfEmployees)
+      end
 
     # Created Arrays
       employeePayArray = collect(1:NumberOfEmployees)
@@ -308,13 +398,23 @@
           IncrementEmployee += 1
 
         # User Edit
-          print("\n\tEnter hrs/week for Employee", IncrementEmployee, ": \t\t")
+          print("\n\tEnter hrs/week for Employee ", IncrementEmployee, ": \t\t")
           employeeHours = chomp(readline())
-          employeeHours = (parse(Float16, employeeHours))
+          try 
+            employeeHours = (parse(Float16, employeeHours))
+          catch e
+            employeeHours = 40
+            println("\tINVALID INPUT!\n\tSetting hrs/week for Employee ", IncrementEmployee, " to: ", employeeHours)
+          end
 
-          print("\tEnter \$/hr for Employee", IncrementEmployee, ": \t\t\t")
+          print("\tEnter \$/hr for Employee ", IncrementEmployee, ": \t\t\t")
           employeePay = chomp(readline())
-          employeePay = (parse(Float16, employeePay))
+          try 
+            employeePay = (parse(Float16, employeePay))
+          catch e
+            employeePay = 16
+            println("\tINVALID INPUT!\n\tSetting \$/hr for Employee ", IncrementEmployee, " to: \t", employeePay)
+          end
 
           employeeNumber = IncrementEmployee
 
@@ -413,19 +513,40 @@
       if(userAdditionalExpensesInput == "y")
         print("\n\tEnter Animal upkeep Expense: \t\t")
         animalUpkeepCost = chomp(readline())
-        animalUpkeepCost = (parse(Float16, animalUpkeepCost))
+        try 
+          animalUpkeepCost = (parse(Float16, animalUpkeepCost))
+        catch e
+          animalUpkeepCost = (dailyProfit * 0.5)
+          println("\tINVALID INPUT!\n\tSetting Animal upkeep Expense to: \t", round(animalUpkeepCost; digits = 2))
+        end
+
 
         print("\tEnter Vehicle Maintenanc: \t\t\t")
         vehicleMaintenanceCost = chomp(readline())
-        vehicleMaintenanceCost = (parse(Float16, vehicleMaintenanceCost))
+        try 
+          vehicleMaintenanceCost = (parse(Float16, vehicleMaintenanceCost))
+        catch e
+          vehicleMaintenanceCost = (dailyProfit * 0.2)
+          println("\tINVALID INPUT!\n\tSetting Vehicle Maintenanc to: \t\t", round(vehicleMaintenanceCost; digits = 2))
+        end
 
         print("\tEnter Regular Maintenance: \t\t\t")
         regularMaintenanceCost = chomp(readline())
-        regularMaintenanceCost = (parse(Float16, regularMaintenanceCost))
+        try 
+          regularMaintenanceCost = (parse(Float16, regularMaintenanceCost))
+        catch e
+          regularMaintenanceCost = (dailyProfit * 0.05)
+          println("\tINVALID INPUT!\n\tSetting Regular Maintenance to: \t", round(regularMaintenanceCost; digits = 2))
+        end
 
         print("\tEnter Other Expenses: \t\t\t\t")
         otherExpenses = chomp(readline())
-        otherExpenses = (parse(Float16, otherExpenses))
+        try 
+          otherExpenses = (parse(Float16, otherExpenses))
+        catch e
+          otherExpenses = (dailyProfit * 0.1)
+          println("\tINVALID INPUT!\n\tSetting Other Expenses to: \t\t\t", round(otherExpenses; digits = 2))
+        end
       end
 
     # Calculations
@@ -511,8 +632,14 @@
       global farmOwner = chomp(readline())
 
       print("Herd Size: \t")
-      global herdSize = chomp(readline())
-      herdSize = trunc(Int32, parse(Float32, herdSize))
+      herdSize = chomp(readline())
+      try 
+        global herdSize = parse(Int32, herdSize)
+      catch e
+        println("INVALID INPUT! Setting Herd size to 250")
+        global herdSize = 250
+      end
+      #herdSize = trunc(Int32, parse(Float32, herdSize))
 
     # End of Intitial Startup
       println("\n...press ENTER to continue\n")
@@ -535,8 +662,12 @@
         # Prompt User to Select Numeric Option
           print("Enter a number: ")
           mainMenuInput = chomp(readline())
-          mainMenuInput = trunc(Int8, parse(Float16, mainMenuInput))
-          println("\n")
+          try 
+            mainMenuInput = parse(Float16, mainMenuInput)
+          catch e
+            println("INVALID INPUT! Please enter a valid number")
+          end
+          println("\n")         
 
         # Statement That Coordinates to the Correct Funcation 
         # Given the Selected Number from the User
@@ -555,8 +686,6 @@
           elseif(mainMenuInput == 7)
             println("...Exiting Application")
             break
-          else 
-            println("please enter a valid input")
           end
       end
 
